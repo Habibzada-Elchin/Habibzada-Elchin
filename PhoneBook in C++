@@ -1,0 +1,406 @@
+#include <iostream>
+#include <string>
+#include <conio.h>
+#include <windows.h>
+using namespace std;
+
+void fillNames(string arr[], string sur_arr[], int age[], int mob[], int size);
+void printNames(string arr[], string sur_arr[], int age[], int mob[], int size, int search, string s_arr[], string s_sur_arr[], int s_age[], int s_mob[], int s_size[]);
+void sortNames(string arr[], string sur_arr[], int age[], int mob[], int size);
+void sortsurNames(string arr[], string sur_arr[], int age[], int mob[], int size);
+void sortage(string arr[], string sur_arr[], int age[], int mob[], int size);
+void sortmob(string arr[], string sur_arr[], int age[], int mob[], int size);
+void edit(string arr[], string sur_arr[], int age[], int mob[], int size);
+void searching(string arr[], string sur_arr[], int age[], int mob[], int size);
+
+int main()
+{
+	string names[10], s_names[10];
+	string surname[10], s_surname[10];
+	int mob[10], s_mob[10];
+	int age[10], s_age[10];
+	int search = 0;
+	int s_size[10];
+	int choise;
+	cout << "\n\n\n\t\t\t\tWelcome to Phone Book\n\n";
+	cout << "\t\t\t\tCreated by Elchin Habibzada\n\n";
+	cout << "\t\t\t\tpress any key for menu: \n"; int x = _getch();
+	system("cls");
+	cout << "\n\n\t\tEnter the number of contacts you want to add: ";
+	int countOfContacts;
+	cin >> countOfContacts;
+	cout << "\n\n\t\t[1] Ad Contacts: \n";
+	cout << "\t\t[2] Show Contacts: \n";
+	cout << "\t\t[3] Sort by Names: \n";
+	cout << "\t\t[4] Sort by Surnames: \n";
+	cout << "\t\t[5] Sort by Ages: \n";
+	cout << "\t\t[6] Sort by Mobile number: \n";
+	cout << "\t\t[7] Edit Contacts: \n";
+	cout << "\t\t[8] Search Contacts: \n";
+	cout << "\t\t[9] Exit: \n";
+	cout << "\tyour choosing... "; cin >> choise;
+	system("cls");
+	if (choise == 1)
+	{
+		fillNames(names, surname, age, mob, countOfContacts);
+	}
+	system("cls");
+	cout << "\n\n\t\t[1] Ad Contacts: \n";
+	cout << "\t\t[2] Show Contacts: \n";
+	cout << "\t\t[3] Sort by Names: \n";
+	cout << "\t\t[4] Sort by Surnames: \n";
+	cout << "\t\t[5] Sort by Ages: \n";
+	cout << "\t\t[6] Sort by Mobile number: \n";
+	cout << "\t\t[7] Edit Contacts: \n";
+	cout << "\t\t[8] Search Contacts: \n";
+	cout << "\t\t[9] Exit: \n";
+	cout << "\tyour choosing... "; cin >> choise;
+	if (choise == 2)
+	{
+		printNames(names, surname, age, mob, countOfContacts, search, s_names, s_surname, s_age, s_mob, s_size);
+		cout << "\npress any key to continue...\n";int x = _getch();
+	}
+	system("cls");
+	cout << "\n\n\t\t[1] Ad Contacts: \n";
+	cout << "\t\t[2] Show Contacts: \n";
+	cout << "\t\t[3] Sort by Names: \n";
+	cout << "\t\t[4] Sort by Surnames: \n";
+	cout << "\t\t[5] Sort by Ages: \n";
+	cout << "\t\t[6] Sort by Mobile number: \n";
+	cout << "\t\t[7] Edit Contacts: \n";
+	cout << "\t\t[8] Search Contacts: \n";
+	cout << "\t\t[9] Exit: \n";
+	cout << "\tyour choosing... "; cin >> choise;
+	if (choise == 3)
+	{
+		sortNames(names, surname, age, mob, countOfContacts);
+		printNames(names, surname, age, mob, countOfContacts, search, s_names, s_surname, s_age, s_mob, s_size);
+		cout << "\npress any key to continue...\n";int x = _getch();
+	}
+	system("cls");
+	cout << "\n\n\t\t[1] Ad Contacts: \n";
+	cout << "\t\t[2] Show Contacts: \n";
+	cout << "\t\t[3] Sort by Names: \n";
+	cout << "\t\t[4] Sort by Surnames: \n";
+	cout << "\t\t[5] Sort by Ages: \n";
+	cout << "\t\t[6] Sort by Mobile number: \n";
+	cout << "\t\t[7] Edit Contacts: \n";
+	cout << "\t\t[8] Search Contacts: \n";
+	cout << "\t\t[9] Exit: \n";
+	cout << "\tyour choosing... "; cin >> choise;
+	if (choise == 4)
+	{
+		sortsurNames(names, surname, age, mob, countOfContacts);
+		printNames(names, surname, age, mob, countOfContacts, search, s_names, s_surname, s_age, s_mob, s_size);
+		cout << "\npress any key to continue...\n";int x = _getch();
+	}
+	system("cls");
+	cout << "\n\n\t\t[1] Ad Contacts: \n";
+	cout << "\t\t[2] Show Contacts: \n";
+	cout << "\t\t[3] Sort by Names: \n";
+	cout << "\t\t[4] Sort by Surnames: \n";
+	cout << "\t\t[5] Sort by Ages: \n";
+	cout << "\t\t[6] Sort by Mobile number: \n";
+	cout << "\t\t[7] Edit Contacts: \n";
+	cout << "\t\t[8] Search Contacts: \n";
+	cout << "\t\t[9] Exit: \n";
+	cout << "\tyour choosing... "; cin >> choise;
+	if (choise == 5)
+	{
+		sortage(names, surname, age, mob, countOfContacts);
+		printNames(names, surname, age, mob, countOfContacts, search, s_names, s_surname, s_age, s_mob, s_size);
+		cout << "\npress any key to continue...\n";int x = _getch();
+	}
+	system("cls");
+	cout << "\n\n\t\t[1] Ad Contacts: \n";
+	cout << "\t\t[2] Show Contacts: \n";
+	cout << "\t\t[3] Sort by Names: \n";
+	cout << "\t\t[4] Sort by Surnames: \n";
+	cout << "\t\t[5] Sort by Ages: \n";
+	cout << "\t\t[6] Sort by Mobile number: \n";
+	cout << "\t\t[7] Edit Contacts: \n";
+	cout << "\t\t[8] Search Contacts: \n";
+	cout << "\t\t[9] Exit: \n";
+	cout << "\tyour choosing... "; cin >> choise;
+	if (choise == 6)
+	{
+		sortmob(names, surname, age, mob, countOfContacts);
+		printNames(names, surname, age, mob, countOfContacts, search, s_names, s_surname, s_age, s_mob, s_size);
+		cout << "\npress any key to continue...\n";int x = _getch();
+	}
+	system("cls");
+	cout << "\n\n\t\t[1] Ad Contacts: \n";
+	cout << "\t\t[2] Show Contacts: \n";
+	cout << "\t\t[3] Sort by Names: \n";
+	cout << "\t\t[4] Sort by Surnames: \n";
+	cout << "\t\t[5] Sort by Ages: \n";
+	cout << "\t\t[6] Sort by Mobile number: \n";
+	cout << "\t\t[7] Edit Contacts: \n";
+	cout << "\t\t[8] Search Contacts: \n";
+	cout << "\t\t[9] Exit: \n";
+	cout << "\tyour choosing... "; cin >> choise;
+	if (choise == 7)
+	{
+		edit(names, surname, age, mob, countOfContacts);
+		cout << "\npress any key to continue...\n";int x = _getch();
+	}
+	system("cls");
+	cout << "\n\n\t\t[1] Ad Contacts: \n";
+	cout << "\t\t[2] Show Contacts: \n";
+	cout << "\t\t[3] Sort by Names: \n";
+	cout << "\t\t[4] Sort by Surnames: \n";
+	cout << "\t\t[5] Sort by Ages: \n";
+	cout << "\t\t[6] Sort by Mobile number: \n";
+	cout << "\t\t[7] Edit Contacts: \n";
+	cout << "\t\t[8] Search Contacts: \n";
+	cout << "\t\t[9] Exit: \n";
+	cout << "\tyour choosing... "; cin >> choise;
+	if (choise == 8)
+	{
+		searching(names, surname, age, mob, countOfContacts);
+		cout << "\npress any key to continue...\n";int x = _getch();
+	}
+	system("cls");
+	cout << "\n\n\t\t[1] Ad Contacts: \n";
+	cout << "\t\t[2] Show Contacts: \n";
+	cout << "\t\t[3] Sort by Names: \n";
+	cout << "\t\t[4] Sort by Surnames: \n";
+	cout << "\t\t[5] Sort by Ages: \n";
+	cout << "\t\t[6] Sort by Mobile number: \n";
+	cout << "\t\t[7] Edit Contacts: \n";
+	cout << "\t\t[8] Search Contacts: \n";
+	cout << "\t\t[9] Exit: \n";
+	cout << "\tyour choosing... "; cin >> choise;
+	if (choise == 9)
+	{
+		cout << "\n\n\n\t\t\t\tThank you for using my program!";
+		cout << "\npress any key to continue...\n";int x = _getch();
+	}
+
+
+}
+
+void fillNames(string arr[], string sur_arr[], int age[], int mob[], int size) {
+	for (int i = 0; i < size; i++)
+	{
+		cout << "Enter " << i + 1 << " Name: ";
+		cin >> arr[i];
+		cout << "Enter " << i + 1 << " Surname: ";
+		cin >> sur_arr[i];
+		cout << "Enter " << i + 1 << " Age: ";
+		cin >> age[i];
+		cout << "Enter " << i + 1 << " Mob: ";
+		cin >> mob[i];
+
+	}
+}
+
+void printNames(string arr[], string sur_arr[], int age[], int mob[], int size, int search, string s_arr[], string s_sur_arr[], int s_age[], int s_mob[], int s_size[])
+{
+
+	cout << endl << endl;
+	for (int i = 0; i < size; i++)
+	{
+		cout << "Contact #" << i + 1 << "\t" << arr[i] << "\t" << sur_arr[i] << "\t" << age[i] << " years  " << "\t" << mob[i] << endl;
+	}
+}
+
+void sortNames(string arr[], string sur_arr[], int age[], int mob[], int size) {
+	cout << "\nSorted By Names: ";
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size - 1; j++)
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				swap(arr[j], arr[j + 1]);
+				swap(sur_arr[j], sur_arr[j + 1]);
+				swap(age[j], age[j + 1]);
+				swap(mob[j], mob[j + 1]);
+			}
+		}
+	}
+}
+
+void sortsurNames(string arr[], string sur_arr[], int age[], int mob[], int size) {
+	cout << "\nSorted By Surnames: ";
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size - 1; j++)
+		{
+			if (sur_arr[j] > sur_arr[j + 1])
+			{
+				swap(arr[j], arr[j + 1]);
+				swap(sur_arr[j], sur_arr[j + 1]);
+				swap(age[j], age[j + 1]);
+				swap(mob[j], mob[j + 1]);
+			}
+		}
+	}
+}
+
+void sortage(string arr[], string sur_arr[], int age[], int mob[], int size) {
+	cout << "\nSorted By Ages: ";
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size - 1; j++)
+		{
+			if (age[j] > age[j + 1])
+			{
+				swap(arr[j], arr[j + 1]);
+				swap(sur_arr[j], sur_arr[j + 1]);
+				swap(age[j], age[j + 1]);
+				swap(mob[j], mob[j + 1]);
+			}
+		}
+	}
+}
+void sortmob(string arr[], string sur_arr[], int age[], int mob[], int size) {
+	cout << "\nSorted By Mobile Numbers: ";
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size - 1; j++)
+		{
+			if (mob[j] > mob[j + 1])
+			{
+				swap(arr[j], arr[j + 1]);
+				swap(sur_arr[j], sur_arr[j + 1]);
+				swap(age[j], age[j + 1]);
+				swap(mob[j], mob[j + 1]);
+			}
+		}
+	}
+}
+void edit(string arr[], string sur_arr[], int age[], int mob[], int size)
+{
+	string word, s_arr[10], s_sur_arr[10];
+	int search = 0, s_size = 0, n = 1;
+	while (n > 0 && n <= size)
+	{
+		void printNames(string arr[], string sur_arr[], int age[], int mob[], int size, int search[], string s_arr[], string s_sur_arr[], int s_age[], int s_mob[], int s_size[]);
+		cout << "\nEnter the contact ID you want to change (for cancel press 0): ";
+		int x = 0;
+		cin >> n;
+		if (n == 0) { cout << "\nContact not found\nPress any key to continue..."; x = _getch(); }
+		else if (n<0 || n>size) { cout << "\nContact not found\nPress any key to continue..."; x = _getch(); }
+		else if (n > 0 || n <= size || n != 0)
+		{
+			for (int i = 0; i < size; i++)
+			{
+				int s_age[10];
+				int s_mob[10];
+				cout << "Enter " << n << " Name: ";
+				cin >> s_arr[i];
+				arr[i] = s_arr[i];
+				arr[i].compare(s_arr[i]);
+				cout << "Enter " << n << " Surname: ";
+				cin >> s_sur_arr[i];
+				sur_arr[i] = s_sur_arr[i];
+				sur_arr[i].compare(s_sur_arr[i]);
+				cout << "Enter " << n << " Age: ";
+				cin >> s_age[i];
+				age[i] = s_age[i];
+				cout << "Enter " << n << " Mob: ";
+				cin >> s_mob[i];
+				mob[i] = s_mob[i];
+				cout << "Contact #" << n << "\t" << arr[i] << "\t" << sur_arr[i] << "\t" << age[i] << " years  " << "\t" << mob[i] << endl;
+				break;
+			}
+		}
+	}
+}
+
+void searching(string arr[], string sur_arr[], int age[], int mob[], int size) {
+	string word;
+	int number[10];
+	int choises;
+	cout << "\nEnter by the way want to find: \n";
+	cout << "[1] - Search by Name: \n";
+	cout << "[2] - Search by Surname: \n";
+	cout << "[3] - Search by Age: \n";
+	cout << "[4] - Search by Mobile number: \n";
+	cout << "[5] - Back to Search menu: \n";
+	cout << "[0] - Back to Main menu: \n";
+	cin >> choises;
+	if (choises == 1) {
+		for (int i = 0; i < size; i++)
+		{
+			while (word != arr[i]) {
+
+				cout << "\nEnter Name: ";
+				cin >> word;
+				if (word == arr[i]) {
+					cout << "Contact #" << i + 1 << "\t" << arr[i] << "\t" << sur_arr[i] << "\t" << age[i] << " years  " << "\t" << mob[i] << endl;
+				}
+				else cout << "Contact not found \nPlease press any key to continue...";
+				cout << "Please choise from menu \n";cin >> choises;
+
+			}
+		}
+	}
+	if (choises == 2) {
+		for (int i = 0; i < size; i++)
+		{
+			while (word != sur_arr[i]) {
+				cout << "\nEnter Surname: ";
+				cin >> word;
+				if (word == sur_arr[i]) {
+					cout << "Contact #" << i + 1 << "\t" << arr[i] << "\t" << sur_arr[i] << "\t" << age[i] << " years  " << "\t" << mob[i] << endl;
+				}
+				else cout << "Contact not found \nPlease press any key to continue...\n";
+				cout << "Please choise from menu \n";cin >> choises;
+
+			}
+		}
+	}
+	if (choises == 3) {
+		for (int i = 0; i < size; i++)
+		{
+			int numb[10];
+			while (numb[10] != age[i]) {
+				cout << "\nEnter Age: ";
+				cin >> word;
+				if (numb[10] == age[i]) {
+					cout << "Contact #" << i + 1 << "\t" << arr[i] << "\t" << sur_arr[i] << "\t" << age[i] << " years  " << "\t" << mob[i] << endl;
+				}
+				else cout << "Contact not found \nPlease press any key to continue...\n";
+				cout << "Please choise from menu \n";cin >> choises;
+			}
+		}
+	}
+	if (choises == 4) {
+		for (int i = 0; i < size; i++)
+		{
+			int num[10];
+			while (num[10] != mob[i]) {
+				cout << "\nEnter Mobile Number: ";
+				cin >> word;
+				if (num[10] == mob[i]) {
+					cout << "Contact #" << i + 1 << "\t" << arr[i] << "\t" << sur_arr[i] << "\t" << age[i] << " years  " << "\t" << mob[i] << endl;
+				}
+				else cout << "Contact not found \nPlease press any key to continue...\n";
+				cout << "Please choise from menu \n";cin >> choises;
+			}
+		}
+	}
+	if (choises == 5) {
+		void searching(string arr[], string sur_arr[], int age[], int mob[], int size);
+		cout << "Please choise from menu \n";cin >> choises;
+	}
+	if (choises == 0) {
+		int choise;
+		cout << "\n\n\t\t[1] Ad Contacts: \n";
+		cout << "\t\t[2] Show Contacts: \n";
+		cout << "\t\t[3] Sort by Names: \n";
+		cout << "\t\t[4] Sort by Surnames: \n";
+		cout << "\t\t[5] Sort by Ages: \n";
+		cout << "\t\t[6] Sort by Mobile number: \n";
+		cout << "\t\t[7] Edit Contacts: \n";
+		cout << "\t\t[8] Search Contacts: \n";
+		cout << "\t\t[9] Exit: \n";
+		cout << "\tyour choosing... "; cin >> choise;
+	}
+
+}
+
+
